@@ -53,7 +53,7 @@
 		},
 		//load svg things
 		{ 	test: Modernizr.inlinesvg,
-  			yep : ['js/prices.js', 'js/compgraph.js'],
+  			yep : ['js/prices.js', 'js/compgraph.js', 'js/updates.js'],
 			nope: 'js/warning.js'
 		}]);
 	</script>
@@ -96,13 +96,17 @@
 				<p class = "subtext">Current-vintage settlement price ($/tCO<sub>2</sub>e) at each California-Quebec joint cap-and-trade auction. An <a class="tooltip" href="#">allowance<span>An allowance is a tradable permit that allows the emission of one metric ton of CO<sub>2</sub>e.</span></a> is sold to the highest bidders until supply is exhausted; all winning bidders pay the lowest accepted bid (the settlement price). Auctions are held quarterly. Source: California Air Resources Board <a href="https://ww2.arb.ca.gov/sites/default/files/2020-08/results_summary.pdf">Summary of Auction Settlement Prices and Results</a>. <a href = "data/auctions/california.csv">Download data</a>.</p>
 			</div>
 		    <div class="span-12 last">
-		        <h1>RECENT UPDATES</h1>
-		        <p>News and social-media widgets are temporarily disabled while the dashboard is being modernized. For the latest official updates, see:</p>
-		        <ul>
-		            <li><a href="https://ww2.arb.ca.gov/news">CARB Newsroom</a></li>
-		            <li><a href="https://ww2.arb.ca.gov/our-work/programs/cap-and-trade-program/auction-information">Cap-and-Trade Auction Information</a></li>
-		            <li><a href="https://ww2.arb.ca.gov/rulemaking">Active CARB Rulemakings</a></li>
-		        </ul>
+		        <h1>AUCTION UPDATES</h1>
+		        <div id="next-auction" class="updates-block"></div>
+		        <div id="recent-auctions" class="updates-block"></div>
+		        <div class="updates-block">
+		            <h2 class="updates-heading">Learn More</h2>
+		            <ul class="updates-links">
+		                <li><a href="https://ww2.arb.ca.gov/our-work/programs/cap-and-trade-program/auction-information">Cap-and-Trade Auction Information</a></li>
+		                <li><a href="https://ww2.arb.ca.gov/news">CARB Newsroom</a></li>
+		                <li><a href="https://ww2.arb.ca.gov/rulemaking">Active CARB Rulemakings</a></li>
+		            </ul>
+		        </div>
 		    </div>
 		    <hr>
 		    <div>

@@ -65,6 +65,68 @@
 	min-height: 160px;
 }
 
+/* Right-column auction-updates panel */
+.updates-block {
+	margin-bottom: 1.6em;
+}
+.updates-heading {
+	font-family: 'ChaparralProRegular', Georgia, serif;
+	color: #F96302;
+	font-size: 0.95em;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	margin: 0 0 0.4em 0;
+	padding-bottom: 0.2em;
+	border-bottom: 1px solid #ddd;
+}
+.next-auction-row {
+	display: flex;
+	align-items: baseline;
+	gap: 0.4em;
+	margin: 0.2em 0 0.3em;
+}
+.next-auction-month {
+	font-family: 'ChaparralProRegular', Georgia, serif;
+	font-size: 1.6em;
+	color: #111;
+}
+.next-auction-num {
+	color: #999;
+	font-size: 0.95em;
+}
+table.recent-auctions {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.92em;
+}
+table.recent-auctions td {
+	padding: 0.25em 0.3em;
+	border-bottom: 1px solid #eee;
+	vertical-align: baseline;
+}
+table.recent-auctions tr:last-child td {
+	border-bottom: 0;
+}
+.ra-date  { color: #444; }
+.ra-num   { color: #999; width: 2.6em; }
+.ra-price { font-weight: bold; color: #111; text-align: right; width: 4em; }
+.ra-chg   { text-align: right; width: 4.5em; font-size: 0.9em; }
+.chg.up   { color: #2a8b3a; }
+.chg.down { color: #B53C36; }
+.updates-more {
+	display: block;
+	margin-top: 0.4em;
+	font-size: 0.85em;
+}
+.updates-links {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.updates-links li {
+	padding: 0.2em 0;
+}
+
 .updatewrapper{
 	height: 15em;
 	float:left;

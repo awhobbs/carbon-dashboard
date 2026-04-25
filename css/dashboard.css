@@ -57,6 +57,14 @@
 	margin-top: 0em !important;
 }
 
+/* The bar/comp charts swap descriptive text into <p> on hover. Without a
+   fixed height the container reflows on every mouseover and the chart
+   below appears to jump. 160px fits the longest description (the
+   Complementary Policies intro) at our current font size + column width. */
+.graphtext {
+	min-height: 160px;
+}
+
 .updatewrapper{
 	height: 15em;
 	float:left;

@@ -1,0 +1,44 @@
+name: refresh-data
+
+on:
+  schedule:
+    # daily at 14:00 UTC (~6am Pacific). CARB updates the auction PDF
+    # quarterly so most days will be no-ops, but we run daily to catch
+    # the update window without polling.
+    - cron: "0 14 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: data/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r data/requirements.txt
+
+      - name: Run fetchers
+        run: |
+          python3 data/fetchers/california_auctions.py
+
+      - name: Commit and push if data changed
+        run: |
+          git config user.name "carbon-dashboard-bot"
+          git config user.email "carbon-dashboard-bot@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain data/)" ]]; then
+            git add data/
+            git commit -m "data: refresh from upstream sources [skip ci]"
+            git push
+          else
+            echo "no data changes"
+          fi

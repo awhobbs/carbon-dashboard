@@ -34,8 +34,6 @@
 	<!--For some reason, bargraph.js won't load via modernizr, so I have to keep d3 outside too.  Need to fix.-->
 	<script type = "text/javascript" src = "js/modernizr.js"></script>
 	<script type = "text/javascript" src = "js/d3.v3.min.js"></script>
-	 <script type="text/javascript" src="https://rss2json.com/gfapi.js"></script>
-	<script type = "text/javascript" src = "js/newsfeed.js"></script>
 
 	<script type = "text/javascript">
 		Modernizr.load([
@@ -54,11 +52,6 @@
 		}]);
 	</script>
 
-	<script type="text/javascript">
-			feedme("http://climatepolicyinitiative.org/tag/ab32/feed/", "cpi", "",100);
-			feedme("https://news.google.com/news/rss/search/section/q/(cap%20and%20trade%20OR%20ab32)%20AND%20california/(cap%20and%20trade%20OR%20ab32)%20AND%20california?hl=en&gl=US&ned=us", "news", "",100);
-			feedme("http://www.arb.ca.gov/lispub/rss/listserv.rss", "content", "arbcombo", 150);
-	</script>
 
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -100,46 +93,13 @@
 				<p class = "subtext">5-day moving average price and volume of California Carbon <a class="tooltip" href="#">Allowance Futures <span>An allowance is a tradable permit that allows the emission of one metric ton of CO<sub>2</sub>e.The first allowance auction was held on November 14, 2012, a few months before the cap and trade program took effect on January 1, 2013. For dates prior to the first auction, this graph captures the price of 2013 vintage futures, traded before actual allowance prices could be discovered through auctions. From 2013 onward, all prices are for the current year's vintage allowance with a futures contract expiring in December of that same year. From January 1, 2014 onward, moving average is derived from settlement prices. </span></a> over time from <a href = "https://www.theice.com/marketdata/reports/142">ICE End of Day Reports</a>. Daily trading volume units are 1000 allowance futures. <a href = "/csv/output.csv">Download data</a>. </p>
 			</div>
 		    <div class="span-12 last">
-		        <div class = "updates">
-				<table class = "tabs" cellspacing="0" cellpadding="0">
-					<tr>
-						<th><a href="#"><h1>NEWS</h1></a></th>
-						<th><a href="#"><h1>CARB UPDATES</h1></a></th>
-						<th><a href="#"><h1>TWEETS</h1></a></th>
-						<th><a href="#"><h1>BLOG</h1></a></th>
-					</tr>
-				</table>
-
-
-				<!-- tab "panes" -->
-				<div class="update_panes">
-					<!-- the tabs -->
-					<div>
-						<div id="news" class = "updatewrapper"><p>Loading...</p></div>
-						<p class = "subtext" style = "float:left">This content is live-updated from <a href = "https://www.google.com/search?hl=en&gl=us&tbm=nws&authuser=0&q=ab32+california&oq=ab32+california&gs_l=news-cc.3..43j43i53.821.858.0.1428.9.2.0.0.0.0.216.369.0j1j1.2.0...0.0...1ac.1.cRPXqp5Zva4">Google News</a> and is not curated by Climate Policy Initiative.</p>
-					</div>
-					<div>
-						<div id="content" class = "updatewrapper"><p>Loading...</p></div>
-						<p class = "subtext" style = "float:left">This content is live-updated from the <a href = "http://www.arb.ca.gov/html/whatsnew.htm">California Air Resources Board</a> and is not curated by Climate Policy Initiative.</p>
-					</div>
-					<div>
-						<div id = "tweets" class = "updatewrapper" style = "overflow: hidden">
-						<a class="twitter-timeline" height = "321" href="https://twitter.com/search?q=%23ab32" data-widget-id="347851819915042816" data-chrome="noheader transparent nofooter">Tweets about "#ab32"</a>
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-						</div>
-						<div>
-							<p class = "subtext" style = "float:left">
-								This content is live-updated from <a href = "https://twitter.com/search?q=%23ab32&mode=relevance&src=typd">Twitter</a> and is not curated by Climate Policy Initiative.
-							</p>
-						</div>
-
-					</div>
-					<div>
-						<div id="cpi" class = "updatewrapper"><p>Loading...</p></div>
-						<p class = "subtext" style = "float:left">This content is curated from <a href = "http://climatepolicyinitiative.org/blog/">The CPI Policy Blog</a>.</p>
-					</div>
-				</div>
-			</div>
+		        <h1>RECENT UPDATES</h1>
+		        <p>News and social-media widgets are temporarily disabled while the dashboard is being modernized. For the latest official updates, see:</p>
+		        <ul>
+		            <li><a href="https://ww2.arb.ca.gov/news">CARB Newsroom</a></li>
+		            <li><a href="https://ww2.arb.ca.gov/our-work/programs/cap-and-trade-program/auction-information">Cap-and-Trade Auction Information</a></li>
+		            <li><a href="https://ww2.arb.ca.gov/rulemaking">Active CARB Rulemakings</a></li>
+		        </ul>
 		    </div>
 		    <hr>
 		    <div>

@@ -3,7 +3,8 @@
 // settlement price over time. D3 v3 (already loaded by index.html).
 
 (function () {
-  var margin = { top: 10, right: 40, bottom: 30, left: 35 };
+  // top margin needs to fit the focus tooltip (rect at y=-45) above the chart
+  var margin = { top: 55, right: 40, bottom: 30, left: 35 };
   var container = document.getElementById("pricediv");
   var width = container.offsetWidth - margin.left - margin.right;
   var height = 278;

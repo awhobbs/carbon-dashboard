@@ -7,13 +7,26 @@
 }
 
 #title {
-	width:635px;
-	margin-top:5px;
-	margin-bottom:5px;
-	height:70px; 
-	background:url('img/California-Carbon-Price-Dashboard-Header-Left.png') no-repeat left center; 
-	float:left; 
-	display:inline; 
+	width: 635px;
+	margin: 0;
+	padding: 0;
+	float: left;
+	display: inline;
+}
+#title a {
+	font-family: 'ChaparralProRegular', Georgia, serif;
+	font-size: 30px;
+	line-height: 1.1;
+	letter-spacing: 0.01em;
+	text-decoration: none;
+}
+#title .title-state { color: #666; }
+#title .title-emph  { color: #F96302; }
+#title .title-subtitle {
+	font-family: 'CronosProLight', Arial, Helvetica, sans-serif;
+	color: #666;
+	font-size: 14px;
+	margin-top: 2px;
 }
 
 #social {

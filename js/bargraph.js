@@ -31,7 +31,10 @@ bargraph("csv/projection_data.csv", allonames, allocation, allospots, "allodiv")
 							
 function bargraph(csvfile, sectornames, sectortext, vertspots, where){
 
-var w = document.getElementById(where).offsetWidth,
+// See note in compgraph.js — fall back to .panes width when target pane
+// is hidden by jQuery Tools tabs.
+var _target = document.getElementById(where);
+var w = _target.offsetWidth || (_target.closest('.panes') || _target.parentNode.parentNode).offsetWidth,
     h = w*(3/4),
     p = [0, 50, 50, 20],
     right_space = 170,

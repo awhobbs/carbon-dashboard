@@ -1,14 +1,12 @@
 
 
 $(function() {
-          // setup ul.tabs to work as tabs for each div directly under div.panes
+    // Wire the tabbed lower panel (Complementary Policies / Emissions Cap /
+    // Emissions History). The upper "updates" panel that used the same
+    // .tabs class was removed, so we no longer init slideshow tabs for it
+    // — and crucially, we no longer call $("table.tabs").tabs(...) twice,
+    // which would overwrite the first binding with a now-nonexistent target.
     $("table.tabs").tabs("div.panes > div");
-    // setup ul.tabs to work as tabs for each div directly under div.panes
-    $("table.tabs").tabs("div.update_panes > div", {
-        interval: 7000,
-        rotate: true
-    }).slideshow();
-    $("table.tabs").data("slideshow").play();
 });
 
 $(function(){

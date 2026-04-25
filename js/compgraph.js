@@ -13,7 +13,12 @@ compgraph("csv/inventory_data.csv", othernames, "compdiv");
 
 function compgraph(csvfile, sectornames, where){
 
-var w = document.getElementById(where).offsetWidth,
+// jQuery Tools tabs hides inactive panes with display:none, so offsetWidth
+// is 0 for any pane that isn't the active tab on first render. Fall back
+// to the parent .panes container (always visible) so all 3 charts size
+// correctly even before their tab has been clicked.
+var _target = document.getElementById(where);
+var w = _target.offsetWidth || (_target.closest('.panes') || _target.parentNode.parentNode).offsetWidth,
     h = 0.87*w-70, // decreasing the second # will move the plot down (?)
     p = [16, 50, 20, 20], // this sets the margins of the svg [top,,bottom,]
         hackOffset = 0, //this is to fix some errors in a hacky way.

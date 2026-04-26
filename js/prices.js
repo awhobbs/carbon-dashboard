@@ -97,9 +97,9 @@
       .style("stroke", "#666")
       .style("stroke-dasharray", "2,2");
     focus.append("rect")
-      .attr("width", 130)
+      .attr("width", 100)
       .attr("height", 38)
-      .attr("x", -65)
+      .attr("x", -50)
       .attr("y", -45)
       .attr("rx", 4)
       .attr("ry", 4)

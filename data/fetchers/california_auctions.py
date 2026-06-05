@@ -52,8 +52,8 @@ def parse_auction_name(name: str) -> re.Match | None:
 
 
 def fetch_pdf(url: str) -> bytes:
-    # CARB's CloudFront blocks non-browser user agents (403), so send a
-    # browser-ish UA.
+    # CARB's CloudFront blocks non-browser requests (403), so send a full
+    # browser-like header set.
     req = urllib.request.Request(
         url,
         headers={
@@ -61,7 +61,10 @@ def fetch_pdf(url: str) -> bytes:
                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
                 "AppleWebKit/537.36 (KHTML, like Gecko) "
                 "Chrome/124.0.0.0 Safari/537.36"
-            )
+            ),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Referer": "https://ww2.arb.ca.gov/our-work/programs/cap-and-trade-program/auction-information",
         },
     )
     with urllib.request.urlopen(req, timeout=30) as resp:

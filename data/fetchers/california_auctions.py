@@ -38,13 +38,33 @@ MONTHS = {
     "december": 12,
 }
 
+# Matched against a lowercased, whitespace-stripped cell: pdfplumber sometimes
+# inserts stray spaces inside words ("Join t Auction") or leaks numbers from
+# the row above into the name cell, so we strip spaces and anchor at the end.
 AUCTION_NAME_RE = re.compile(
-    r"^(?P<month>[A-Za-z]+)\s+(?P<year>\d{4})\s+Joint Auction\s+#(?P<num>\d+)$"
+    r"(?P<month>january|february|march|april|may|june|july|august|september"
+    r"|october|november|december)(?P<year>\d{4})jointauction#(?P<num>\d+)$"
 )
 
 
+def parse_auction_name(name: str) -> re.Match | None:
+    return AUCTION_NAME_RE.search(re.sub(r"\s+", "", name).lower())
+
+
 def fetch_pdf(url: str) -> bytes:
-    with urllib.request.urlopen(url, timeout=30) as resp:
+    # CARB's CloudFront blocks non-browser user agents (403), so send a
+    # browser-ish UA.
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/124.0.0.0 Safari/537.36"
+            )
+        },
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
         return resp.read()
 
 
@@ -74,10 +94,10 @@ def auction_date(name: str) -> str:
     We approximate with the 15th of the month — close enough for a yearly
     x-axis and avoids fake precision.
     """
-    m = AUCTION_NAME_RE.match(name.strip())
+    m = parse_auction_name(name)
     if not m:
         raise ValueError(f"unrecognized auction name: {name!r}")
-    month = MONTHS[m.group("month").lower()]
+    month = MONTHS[m.group("month")]
     year = int(m.group("year"))
     return f"{year:04d}-{month:02d}-15"
 
@@ -99,10 +119,11 @@ def parse_table(pdf_bytes: bytes) -> list[dict]:
                     if len(cells) != 7:
                         continue
                     name = cells[0].strip()
-                    if not AUCTION_NAME_RE.match(name):
+                    m = parse_auction_name(name)
+                    if not m:
                         continue
                     rows.append({
-                        "auction_number": int(name.rsplit("#", 1)[1]),
+                        "auction_number": int(m.group("num")),
                         "auction_date": auction_date(name),
                         "current_offered": parse_int(cells[1]),
                         "current_sold": parse_int(cells[2]),

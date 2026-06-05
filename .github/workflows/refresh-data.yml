@@ -1,11 +1,10 @@
 name: refresh-data
 
 on:
-  schedule:
-    # daily at 14:00 UTC (~6am Pacific). CARB updates the auction PDF
-    # quarterly so most days will be no-ops, but we run daily to catch
-    # the update window without polling.
-    - cron: "0 14 * * *"
+  # Schedule disabled 2026-06-05: CARB's CloudFront 403s GitHub Actions
+  # runner IPs. The refresh now runs weekly via cron on armazi
+  # (~/bin/carbon-dashboard-refresh.sh), which pushes data commits here.
+  # Kept as workflow_dispatch in case CARB unblocks datacenter IPs.
   workflow_dispatch: {}
 
 jobs:
